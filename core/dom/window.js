@@ -89,7 +89,10 @@ CKEDITOR.tools.extend( CKEDITOR.dom.window.prototype, {
 	 * @returns {CKEDITOR.dom.element} The frame element or `null` if not in a frame context.
 	 */
 	getFrame: function() {
-		var iframe = this.$.frameElement;
+		var iframe = null;
+		try {
+			iframe = this.$.frameElement;
+		} catch (e) {}
 		return iframe ? new CKEDITOR.dom.element.get( iframe ) : null;
 	}
 } );
